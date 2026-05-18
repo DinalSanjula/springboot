@@ -17,7 +17,7 @@ public class CreateCustomerRequest {
     @Pattern(regexp = "/^[0]{1}[7]{1}[01245678]{1}[0-9]{7}$/gm" , message = "Phone number is incorrect")
     private String phoneNo;
 
-    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$" , message = "Provided email is incorrect")
+    @Pattern(regexp = "^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$" , message = "Provided email is incorrect")
     private String email;
 
 
