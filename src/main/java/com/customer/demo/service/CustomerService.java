@@ -1,12 +1,14 @@
 package com.customer.demo.service;
 
 import com.customer.demo.DTO.CreateCustomerRequest;
+import com.customer.demo.DTO.CustomerResponse;
 import com.customer.demo.models.Customer;
 import com.customer.demo.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -22,6 +24,10 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
+    public Optional<Customer> getCustomerById(long id){
+        return customerRepository.findById(id);
+    }
+
     public Customer createCustomer(CreateCustomerRequest request) {
 
         if (customerRepository.existsByEmail(request.getEmail())) {
@@ -34,4 +40,6 @@ public class CustomerService {
 
         return customerRepository.save(customer);
     }
+
+
 }

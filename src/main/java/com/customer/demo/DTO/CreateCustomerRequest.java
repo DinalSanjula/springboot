@@ -14,7 +14,7 @@ public class CreateCustomerRequest {
     @Size(min = 3 , max = 100 , message = "last name has to be between 1 - 100")
     private String lastName;
 
-    @Pattern(regexp = "/^[0]{1}[7]{1}[01245678]{1}[0-9]{7}$/gm" , message = "Phone number is incorrect")
+    @Pattern(regexp = "^[0]{1}[7]{1}[01245678]{1}[0-9]{7}$" , message = "Phone number is incorrect")
     private String phoneNo;
 
     @Pattern(regexp = "^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$" , message = "Provided email is incorrect")
