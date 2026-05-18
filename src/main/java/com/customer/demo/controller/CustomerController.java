@@ -51,4 +51,13 @@ public class CustomerController {
         Customer cust = customerService.createCustomer(request);
         return CustomerResponse.from(cust);
     }
+
+    @GetMapping("/email")
+    public CustomerResponse getCustomerbyEmail(@RequestParam String email){
+
+        Optional<Customer> customer = customerService.getCustomerByEmail(email);
+        return customer.map(CustomerResponse::from).orElse(null) ;
+
+
+    }
 }

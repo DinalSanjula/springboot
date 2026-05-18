@@ -49,6 +49,6 @@ public class ViewController {
 
         customerService.createCustomer(request);
 
-        return "redirect:/create-view";
+        return "redirect:/index";
     }
 }

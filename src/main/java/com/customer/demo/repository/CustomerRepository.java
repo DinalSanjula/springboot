@@ -27,4 +27,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     Optional<Customer> findByEmail(String email);
     boolean existsByEmail(String email);
     List<Customer> findByFirstName(String firstName);
+
+    List<Customer> findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(String firstname , String lastname);
+
+    List<Customer> findByLastName(String lastName);
+
 }

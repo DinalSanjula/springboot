@@ -41,5 +41,9 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
+    public Optional<Customer> getCustomerByEmail(String email){
+        return customerRepository.findByEmail(email);
+    }
+
 
 }
