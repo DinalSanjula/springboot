@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>All Customers</title>
+
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f8;
+        margin: 0;
+        padding: 30px;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 25px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    thead {
+        background-color: #007bff;
+        color: white;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tbody tr:hover {
+        background-color: #eef5ff;
+    }
+
+    .no-data {
+        text-align: center;
+        color: #777;
+        font-size: 18px;
+        padding: 20px;
+    }
+
+    .phone-empty {
+        color: #999;
+        font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Customer List</h1>
+
+  <table th:if="${customers != null and !customers.isEmpty()}">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="customer : ${customers}">
+      <td th:text="${customer.id}">1</td>
+      <td th:text="${customer.firstName}">John</td>
+      <td th:text="${customer.lastName}">Doe</td>
+      <td th:text="${customer.email}">john@example.com</td>
+
+      <td>
+                <span th:if="${customer.phoneNo != null and !customer.phoneNo.isEmpty()}"
+                      th:text="${customer.phoneNo}">
+                    0771234567
+                </span>
+
+        <span th:if="${customer.phoneNo == null or customer.phoneNo.isEmpty()}"
+              class="phone-empty">
+                    No phone number
+                </span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div th:if="${customers == null or customers.isEmpty()}" class="no-data">
+    No customers found.
+  </div>
+</div>
+
+</body>
+</html>

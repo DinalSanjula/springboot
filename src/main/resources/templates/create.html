@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Customer</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 450px;
+            margin: 60px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .error {
+            color: red;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 11px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Create Customer</h2>
+
+    <form th:action="@{/create}"
+          th:object="${customerRequest}"
+          method="post">
+
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text"
+                   id="firstName"
+                   th:field="*{firstName}"
+                   placeholder="Enter first name">
+
+            <div class="error"
+                 th:if="${#fields.hasErrors('firstName')}"
+                 th:errors="*{firstName}">
+                First name error
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text"
+                   id="lastName"
+                   th:field="*{lastName}"
+                   placeholder="Enter last name">
+
+            <div class="error"
+                 th:if="${#fields.hasErrors('lastName')}"
+                 th:errors="*{lastName}">
+                Last name error
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="phoneNo">Phone Number</label>
+            <input type="text"
+                   id="phoneNo"
+                   th:field="*{phoneNo}"
+                   placeholder="Enter phone number">
+
+            <div class="error"
+                 th:if="${#fields.hasErrors('phoneNo')}"
+                 th:errors="*{phoneNo}">
+                Phone number error
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text"
+                   id="email"
+                   th:field="*{email}"
+                   placeholder="Enter email">
+
+            <div class="error"
+                 th:if="${#fields.hasErrors('email')}"
+                 th:errors="*{email}">
+                Email error
+            </div>
+        </div>
+
+        <button type="submit">Create Customer</button>
+    </form>
+
+    <a th:href="@{/customers}" class="back-link">Back to Customers</a>
+</div>
+
+</body>
+</html>

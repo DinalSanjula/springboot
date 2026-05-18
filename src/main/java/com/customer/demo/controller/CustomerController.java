@@ -27,9 +27,10 @@ public class CustomerController {
     }
 
     @GetMapping
-    public List<Customer> getAllCustomer() {
+    public List<CustomerResponse> getAllCustomer() {
 
-        return customerService.getAllCustomers();
+        return customerService
+                .getAllCustomers().stream().map(CustomerResponse::from).toList();
     }
 
     @GetMapping("/{id}")
